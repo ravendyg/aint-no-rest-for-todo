@@ -14,7 +14,7 @@ module.exports =
   },
   output:
   {
-    path: __dirname + '/public/js/',
+    path: __dirname + '/public/build/',
     filename: '[name].min.js',
     library: '[name]'
   },
