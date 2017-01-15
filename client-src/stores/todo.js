@@ -12,11 +12,23 @@ try {
 export var todoStore = {
   state,
   addTodo(text) {
-    this.state.push({
+    var newItem = {
       id: unixTsp(),
       text,
       done: false
-    });
+    };
+
+    var i;
+    for (i = 0; i < this.state.length; i++) {
+      if (this.state[i].text < text) {
+        this.state.splice(i, 0, newItem);
+        break;
+      }
+    }
+    // handle when should be the last one
+    if (i === this.state.length) {
+      this.state.push(newItem);
+    }
 
     localStorage.setItem('todo-state', JSON.stringify(this.state));
   },
