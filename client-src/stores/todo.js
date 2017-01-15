@@ -2,14 +2,23 @@
 
 import { unixTsp } from '../utils';
 
+var state;
+try {
+  state = JSON.parse(localStorage.getItem('todo-state') || '[]');
+} catch (err) {
+  state = [];
+}
+
 export var todoStore = {
-  state: [],
+  state,
   addTodo(text) {
     this.state.push({
       id: unixTsp(),
       text,
       done: false
     });
+
+    localStorage.setItem('todo-state', JSON.stringify(this.state));
   },
   removeTodo(id) {
     for (var i = 0; i < this.state.length; i++) {
@@ -18,5 +27,7 @@ export var todoStore = {
         break;
       }
     }
+
+    localStorage.setItem('todo-state', JSON.stringify(this.state));
   }
 };
