@@ -17,17 +17,22 @@ export default Vue.component(
     },
     render(h, context) {
       return (
-        <li>
+        <li class={this.item.done ? 'completed' : ''}>
           {this.beingEdited
-            ? <div>
+            ? <div class='being-edited'>
                 <todo-input
                   initialVal={this.item.text}
                   watchBlur={true}
                   onReport={this.changeTodo.bind(this)}
                 />
               </div>
-            : <div className='content'>
+            : <div
+                class='content'
+                onMouseOver={this.mouseOver}
+                onMouseOut={this.mouseOut}
+              >
                 <input
+                  class='check'
                   type='checkbox'
                   checked={this.item.done}
                   onClick={this.toggle.bind(this)}
@@ -39,7 +44,7 @@ export default Vue.component(
                   {this.item.text}
                 </label>
                 <button
-                  className='delete-btn'
+                  class='delete-btn'
                   onClick={this.remove.bind(this)}
                 >X</button>
               </div>
@@ -48,6 +53,12 @@ export default Vue.component(
       );
     },
     methods: {
+      mouseOver() {
+        console.log('over');
+      },
+      mouseOut() {
+        console.log('out');
+      },
       remove() {
         todoStore.removeTodo(this.item.id);
       },

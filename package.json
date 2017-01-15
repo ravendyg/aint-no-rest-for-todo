@@ -38,8 +38,8 @@
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "vue": "2.1.8",
-    "vue-router": "2.1.1",
     "vue-loader": "10.0.2",
+    "vue-router": "2.1.1",
     "webpack": "1.14.0"
   }
 }

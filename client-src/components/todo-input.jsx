@@ -12,7 +12,7 @@ export default Vue.component(
     props: ['watchBlur', 'initialVal'],
     render(h, context) {
       return (
-        <div className='todo-input'>
+        <div class='todo-input'>
           <form onSubmit={this.submit.bind(this)}>
             <input
               key={this.key}

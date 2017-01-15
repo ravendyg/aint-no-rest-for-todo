@@ -12,14 +12,14 @@ export default Vue.component(
   {
     render(h, context) {
       return (
-        <div>
-          <div className='todo-header'>
+        <div class='todo-app'>
+          <div class='todo-header'>
             <todo-input
               onReport={this.addTodo.bind(this)}
               initialVal={''}
             />
           </div>
-          <ul className='todo-body'>
+          <ul class='todo-body'>
             {this.sharedState.map(
               e => <todo-item item={e} />
             )}
