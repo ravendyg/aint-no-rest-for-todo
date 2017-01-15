@@ -13,9 +13,14 @@ export default Vue.component(
     render(h, context) {
       return (
         <div>
-          <div className='header'>
+          <div className='todo-header'>
             <todo-input onReport={this.addTodo.bind(this)}/>
           </div>
+          <ul className='todo-body'>
+            {this.sharedState.map(
+              e => <todo-item item={e} remove={this.removeItem.bind(this, e.id)}/>
+            )}
+          </ul>
         </div>
       );
     },
@@ -27,6 +32,9 @@ export default Vue.component(
     methods: {
       addTodo(text) {
         todoStore.addTodo(text);
+      },
+      removeItem(id) {
+        todoStore.removeTodo(id);
       }
     }
   }
