@@ -82,5 +82,6 @@
   },
   "parserOptions": {
     "sourceType": "module"
-  }
+  },
+  "extends": "vue"
 }

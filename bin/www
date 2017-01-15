@@ -2,6 +2,21 @@
 'use strict';
 
 /**
+ * Check /locals/config.json before starting the server
+ */
+const path = require('path');
+const fs = require('fs');
+
+const locals = path.join(__dirname, '..', 'locals');
+if (!fs.existsSync(locals)) {
+  fs.mkdir(locals);
+}
+const confJson = path.join(locals, 'config.json');
+if (!fs.existsSync(confJson)) {
+  fs.writeFileSync(confJson, '{}', 'utf8');
+}
+
+/**
  * Module dependencies.
  */
 
@@ -9,6 +24,8 @@ const app = require('../app');
 const debug = require('debug')('proxy-constructor:server');
 const http = require('http');
 const config = require('../lib/config');
+
+
 
 /**
  * Get port from environment and store in Express.
