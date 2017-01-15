@@ -30,7 +30,7 @@ export var todoStore = {
       this.state.push(newItem);
     }
 
-    localStorage.setItem('todo-state', JSON.stringify(this.state));
+    saveState.call(this);
   },
   removeTodo(id) {
     for (var i = 0; i < this.state.length; i++) {
@@ -40,6 +40,20 @@ export var todoStore = {
       }
     }
 
-    localStorage.setItem('todo-state', JSON.stringify(this.state));
+    saveState.call(this);
+  },
+  toggleDone(id) {
+    for (var i = 0; i < this.state.length; i++) {
+      if (this.state[i].id === id) {
+        this.state[i].done = !this.state[i].done;
+        break;
+      }
+    }
+
+    saveState.call(this);
   }
 };
+
+function saveState() {
+  localStorage.setItem('todo-state', JSON.stringify(this.state));
+}

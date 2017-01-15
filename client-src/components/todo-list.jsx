@@ -18,7 +18,7 @@ export default Vue.component(
           </div>
           <ul className='todo-body'>
             {this.sharedState.map(
-              e => <todo-item item={e} remove={this.removeItem.bind(this, e.id)}/>
+              e => <todo-item item={e} />
             )}
           </ul>
         </div>
@@ -32,9 +32,6 @@ export default Vue.component(
     methods: {
       addTodo(text) {
         todoStore.addTodo(text);
-      },
-      removeItem(id) {
-        todoStore.removeTodo(id);
       }
     }
   }
