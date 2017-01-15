@@ -16,6 +16,13 @@ npm run build      - dev mode
 bpm run build:prod - production
 ```
 
+### Start
+```
+npm start
+
+pm2 start process.json
+```
+
 
 ### Config
 Put params to be overwritten into /locals/config.json (if it's empty a new file would be created).
