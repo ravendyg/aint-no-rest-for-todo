@@ -14,7 +14,10 @@ export default Vue.component(
       return (
         <div>
           <div className='todo-header'>
-            <todo-input onReport={this.addTodo.bind(this)}/>
+            <todo-input
+              onReport={this.addTodo.bind(this)}
+              initialVal={''}
+            />
           </div>
           <ul className='todo-body'>
             {this.sharedState.map(
