@@ -5,7 +5,7 @@ import Vue from 'vue';
 
 import VueRouter from 'vue-router'
 
-import * as MainRoute from './main';
+import * as TodoList from './components/todo-list';
 
 Vue.use(VueRouter);
 
@@ -15,7 +15,7 @@ var routes = [
   {
     path: '/',
     component: {
-      template: '<main-route></main-route>'
+      template: '<todo-list></todo-list>'
     }
   }, {
     path: '*', redirect: '/'
